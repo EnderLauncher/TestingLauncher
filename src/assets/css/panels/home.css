@@ -1,3 +1,15 @@
+* {
+    --icon-unselected: #707070;
+    --box: #1A1A1A;
+    --box-hover: #202020;
+    --box-button: #0078bd;
+    --box-button-hover: #053e8a;
+    --box-button-hover-2: #001f47;
+    --box-button-gradient-1: 	#00FFFF;
+    --box-button-gradient-2: 	#0096FF;
+}
+
+
 .home .container {
     display: flex;
     height: 100%;
@@ -11,19 +23,26 @@
  *                                                                             *
  ******************************************************************************/
 
-.status-server {
+ .status-server {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--background);
     width: 25rem;
     height: 3rem;
-    color: var(--color);
     border-radius: 10px;
     margin-top: 3rem;
     padding: 1rem;
     text-align: center;
+    background-color: var(--sidebar);
+    border-right: 1px solid var(--sidebar-border);
+    transition: all 0.2s;
+    background: rgba( 0, 0, 0, 0.05 );
+    border-radius: 10px;
+    
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    backdrop-filter: blur( 15.5px );
+    -webkit-backdrop-filter: blur( 15.5px );
 }
 
 .server-status-icon {
@@ -208,13 +227,21 @@
  *                                                                             *
  ******************************************************************************/
 
-.sidebar {
+ .sidebar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 89%;
     height: 90px;
-    background: var(--background-transparent);
+    background-color: var(--sidebar);
+    border-right: 1px solid var(--sidebar-border);
+    transition: all 0.2s;
+    background: rgba( 0, 0, 0, 0.05 );
+    border-radius: 10px;
+    
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 5px );
 }
 
 .player-options {
@@ -315,11 +342,19 @@
 }
 
 .settings-btn {
+    text-align: center;
     width: 3rem;
     height: 3rem;
     font-size: 3rem;
-    color: var(--element-color);
+    border-radius: 100px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
     margin: 0 1.5rem;
+}
+.settings-btn:hover {
+    color: var(--icon-unselected);
 }
 
 .instance-popup {

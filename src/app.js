@@ -72,6 +72,75 @@ ipcMain.handle('is-dark-theme', (_, theme) => {
 
 app.on('window-all-closed', () => app.quit());
 
+let startedAppTime = Date.now();
+
+const rpc = require('discord-rpc');
+let client = new rpc.Client({ transport: 'ipc' });
+
+ipcMain.on('new-status-discord', async () => {
+    client.login({ clientId: '1274520960057479178' });
+    client.on('ready', () => {
+        client.request('SET_ACTIVITY', {
+            pid: process.pid,
+            activity: {
+                details: 'En el menú',
+                assets: {
+                    large_image: 'nebula',
+                },
+                instance: false,
+                timestamps: {
+                    start: startedAppTime
+                }
+            },
+        });
+    });
+});
+
+
+ipcMain.on('new-status-discord-jugando', async (event, status) => { 
+    console.log(status)
+    if(client) await client.destroy();
+    client = new rpc.Client({ transport: 'ipc' });
+    client.login({ clientId: '1274520960057479178' });
+    client.on('ready', () => {
+        client.request('SET_ACTIVITY', {
+            pid: process.pid,
+            activity: {
+                details: status,
+                assets: {
+                    large_image: 'nebula',
+                },
+                instance: false,
+                timestamps: {
+                    start: startedAppTime
+                }
+            },
+        });
+    });
+});
+
+ipcMain.on('delete-and-new-status-discord', async () => { 
+    if(client) client.destroy();
+    client = new rpc.Client({ transport: 'ipc' });
+    client.login({ clientId: '1274520960057479178' });
+    client.on('ready', () => {
+        client.request('SET_ACTIVITY', {
+            pid: process.pid,
+            activity: {
+                details: 'En el menú',
+                assets: {
+                    large_image: 'nebula',
+                },
+                instance: false,
+                timestamps: {
+                    start: startedAppTime
+                }
+            },
+        });
+    });
+});
+
+
 autoUpdater.autoDownload = false;
 
 ipcMain.handle('update-app', async () => {

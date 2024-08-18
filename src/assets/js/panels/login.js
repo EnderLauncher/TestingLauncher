@@ -30,14 +30,18 @@ class Login {
     async getMicrosoft() {
         console.log('Initializing Microsoft login...');
         let popupLogin = new popup();
-        let loginHome = document.querySelector('.login-home');
-        let microsoftBtn = document.querySelector('.connect-home');
+        let loginHome = document.querySelector('.login-card');
+        let microsoftBtn = document.querySelector('.microsoft');
+        let crackBtn = document.querySelector('.mojang');
         loginHome.style.display = 'block';
 
+        crackBtn.addEventListener("click", () => {
+            this.getCrack();
+        });
         microsoftBtn.addEventListener("click", () => {
             popupLogin.openPopup({
-                title: 'Connexion',
-                content: 'Veuillez patienter...',
+                title: 'Conectando',
+                content: 'Espere un momento...',
                 color: 'var(--color)'
             });
 
@@ -52,7 +56,7 @@ class Login {
 
             }).catch(err => {
                 popupLogin.openPopup({
-                    title: 'Erreur',
+                    title: 'Error',
                     content: err,
                     options: true
                 });
@@ -63,17 +67,16 @@ class Login {
     async getCrack() {
         console.log('Initializing offline login...');
         let popupLogin = new popup();
-        let loginOffline = document.querySelector('.login-offline');
-
-        let emailOffline = document.querySelector('.email-offline');
-        let connectOffline = document.querySelector('.connect-offline');
+        let loginOffline = document.querySelector('.login-card-mojang');
+        let emailOffline = document.querySelector('.Mail');
+        let connectOffline = document.querySelector('.login-btn');
         loginOffline.style.display = 'block';
 
         connectOffline.addEventListener('click', async () => {
             if (emailOffline.value.length < 3) {
                 popupLogin.openPopup({
-                    title: 'Erreur',
-                    content: 'Votre pseudo doit faire au moins 3 caractères.',
+                    title: 'Error',
+                    content: 'Introdusca mas de 3 caracteres.',
                     options: true
                 });
                 return;
@@ -81,8 +84,8 @@ class Login {
 
             if (emailOffline.value.match(/ /g)) {
                 popupLogin.openPopup({
-                    title: 'Erreur',
-                    content: 'Votre pseudo ne doit pas contenir d\'espaces.',
+                    title: 'Error',
+                    content: 'Su nombre no debe contener d\'espacios.',
                     options: true
                 });
                 return;
@@ -92,7 +95,7 @@ class Login {
 
             if (MojangConnect.error) {
                 popupLogin.openPopup({
-                    title: 'Erreur',
+                    title: 'Error',
                     content: MojangConnect.message,
                     options: true
                 });
@@ -121,14 +124,14 @@ class Login {
 
         AZauthConnectBTN.addEventListener('click', async () => {
             PopupLogin.openPopup({
-                title: 'Connexion en cours...',
-                content: 'Veuillez patienter...',
+                title: 'Conectando',
+                content: 'Espere un momento...',
                 color: 'var(--color)'
             });
 
             if (AZauthEmail.value == '' || AZauthPassword.value == '') {
                 PopupLogin.openPopup({
-                    title: 'Erreur',
+                    title: 'Error',
                     content: 'Veuillez remplir tous les champs.',
                     options: true
                 });
