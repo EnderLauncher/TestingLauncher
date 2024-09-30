@@ -1,7 +1,7 @@
 {
     "name": "Nebula-Launcher",
     "preductname": "Nebula Launcher",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Launcher de Nebula Studios",
     "main": "src/app.js",
     "author": {
@@ -9,7 +9,7 @@
         "email": "soporte@nebulastudios.xyz",
         "url": "https://nebulastudios.xyz"
     },
-    "url": "http://40.233.86.216:25566/nebula",
+    "url": "http://ignexotic.fun/Api/nebula",
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
         "dev": "cross-env-shell DEV_TOOL=open nodemon --exec npm start",
