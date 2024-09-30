@@ -124,7 +124,7 @@ class Splash {
     }
 
     startLauncher() {
-        this.setStatus(`Sexo Anal`);
+        this.setStatus(`xd`);
         ipcRenderer.send('main-window-open');
         ipcRenderer.send('update-window-close');
     }

@@ -1,7 +1,7 @@
 {
     "name": "Nebula-Launcher",
     "preductname": "Nebula Launcher",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Launcher de Nebula Studios",
     "main": "src/app.js",
     "author": {
